@@ -1,0 +1,70 @@
+*{
+    font-family: Arial,sans-serif;
+    padding: 0;
+    margin: 0;
+}
+table{
+    height: auto;
+}
+table tr td{
+    padding: .5rem;
+}
+thead tr td{
+    font-weight: bold;
+}
+header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background: #ececec;
+    padding: 1rem .5rem;
+}
+a{
+    text-decoration: none;
+    font-size: 1rem;
+    color:royalblue;
+}
+main{
+    display: block;
+    margin: 0 auto;
+    padding: 1rem .5rem;
+    height: 75vh;
+}
+.title{
+    padding: .5rem;
+    display: block;
+}
+.title h3{
+    font-size: 2rem;
+    font-weight: 600;
+    display: block;
+    line-height: 120%;
+    margin-bottom: .5rem;
+}
+.bookingDetails{
+    width: 300px;
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:1rem;
+}
+footer{
+    padding: 2rem;
+    display: block;
+    background-color: #ececec;
+}
+label,input[type='text'], input[type="number"], input[type='submit']{
+    display: inline-block;
+    width: 250px;
+    font-size: 1rem;
+    padding: .3rem .5rem;
+    margin: .5rem 0;
+}
+#tableDetails, #tableEvents{
+    width: 780px;
+    display: inline-block;
+    vertical-align: top;
+}

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Events</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}" type="text/css">
+</head>
+<body>
+    <header>
+        <div class="name-place">
+            <h3>WEBA</h3>
+        </div>
+       <nav>
+           <a href="/events">All Events</a>
+           <a href="/eventBooking">Booked Events</a>
+       </nav>
+    </header>
+    <main>
+        <div class="title">
+            <h3>Welcome to our Event Booking App</h3>
+            <p>Best place to book events</p>
+        </div>
+
+        <table id="tableEvents">
+            <thead>
+                <tr>
+                    <td>Event</td>
+                    <td>Event Description</td>
+                    <td>Event Popularity</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="event:${eventsList}">
+
+                    <td>
+                        <input type="radio" name="eventRadioBtn" th:value="${event.getName()}"> <th:block th:text="${event.getName()}"></th:block>
+                    </td>
+                    <td th:text="${event.getDescription()}"></td>
+                    <td th:text="${event.getPopularityScore()}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table id="tableDetails">
+            <tbody>
+            <tr>
+                <td>
+                    <h2>Enter details</h2>
+                </td>
+            </tr>
+                <tr>
+                    <td>
+                        <form action="/events" method="post">
+                            <label for="selectedEvent">Selected Event</label>
+                            <input type="text" name="selectedEvent" id="selectedEvent" readonly><br>
+                            <label for="attendeeName">Name</label>
+                            <input type="text" name="attendeeName" id="attendeeName" /><br>
+                            <label for="numberOfTickets">Number of tickets: </label>
+                            <input type="number" min="1" max="4" id="numberOfTickets" name="numberOfTickets"><br>
+                            <input type="submit" value="Book event">
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p>Event Boooking App is Developed By Ivan Ivanovski <script>document.write(String(new Date().getFullYear()))</script></p>
+    </footer>
+    <script>
+        // Select all radio buttons with the name 'eventRadioBtn'
+        let events = document.querySelectorAll("input[name='eventRadioBtn']");
+
+        // Add an event listener to each radio button to update the selected event
+        events.forEach((eventRadio) => {
+            eventRadio.addEventListener('change', () => {
+                // When a radio button is selected, set the selected event's value in the text field
+                document.getElementById("selectedEvent").value = eventRadio.value;
+            });
+        });
+    </script>
+
+</body>
+</html>
