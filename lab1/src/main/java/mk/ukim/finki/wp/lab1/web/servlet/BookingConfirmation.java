@@ -12,7 +12,7 @@ import org.thymeleaf.web.servlet.JakartaServletWebApplication;
 
 import java.io.IOException;
 
-@WebServlet("/eventBooking")
+@WebServlet("/eventBookingServlet")
 public class BookingConfirmation extends HttpServlet {
     private final SpringTemplateEngine springTemplateEngine;
 

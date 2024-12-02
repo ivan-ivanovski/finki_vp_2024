@@ -13,7 +13,7 @@ import org.thymeleaf.web.servlet.JakartaServletWebApplication;
 
 import java.io.IOException;
 
-@WebServlet("/events")
+@WebServlet(name="event-list-servlet",urlPatterns = "/eventsServlet")
 public class EventListServlet extends HttpServlet {
     private final SpringTemplateEngine springTemplateEngine;
     private final EventService eventService;
@@ -42,7 +42,7 @@ public class EventListServlet extends HttpServlet {
         String attendeeName = req.getParameter("attendeeName");
         String numberOfTickets = req.getParameter("numberOfTickets");
         if(selectedEvent==null || selectedEvent.isEmpty() && attendeeName==null || attendeeName.isEmpty() && numberOfTickets==null || numberOfTickets.isEmpty()){
-            resp.sendRedirect("/events");
+            resp.sendRedirect("/eventsServlet");
         }
         else{
             // Store them in the session
@@ -51,7 +51,7 @@ public class EventListServlet extends HttpServlet {
             req.getSession().setAttribute("numberOfTickets", numberOfTickets);
 
             // Redirect to the confirmation page
-            resp.sendRedirect("/eventBooking");
+            resp.sendRedirect("/eventBookingServlet");
         }
 
     }

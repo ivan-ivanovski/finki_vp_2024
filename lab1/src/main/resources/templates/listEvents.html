@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Events</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}" type="text/css">
+</head>
+<body>
+
+<header>
+    <div class="name-place">
+        <h3>WEBA</h3>
+    </div>
+    <nav>
+        <a href="/events">All Events</a>
+        <a href="/eventBooking">Booked Events</a>
+    </nav>
+</header>
+<main>
+    <h1>All Events</h1>
+
+    <div th:if="${error != null}">
+        <p th:text="${error}"></p>
+    </div>
+
+    <table border="1">
+        <thead style="text-align: left">
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Tickets</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="event : ${events}">
+            <td th:text="${event.name}"></td>
+            <td th:text="${event.location.name}"></td>
+            <td>
+                <input type="number" placeholder="Number of tickets" aria-label=""/>
+            </td>
+            <td>
+                <a href="#">Edit</a>
+                <a href="#">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</main>
+
+</body>
+</html>
